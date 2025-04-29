@@ -20,9 +20,18 @@ Planned:
 - Procedurally animated whale
   - Based off of To Be A Whale's whale controller, adapted for more fluid controls
   - 2 stage system of blended animations and a intermediate animation controller, that is then driven by a high level system.
+- Camera Perspective-to-Orthographic View-Matrix Shifter
+  - Fun tool that modyfies a camera's perspective matrix to lerp smoothly from a perspective view to an orthographic one 
+  - For additional fun and mathematics, can also learp to a half orthographic, half perspective view! Either horizontally or vertically
 - Scriptable Object based Composition Editor
   - Allows for scene objects to be moves and positioned into various compositions
   - Fully editable/composable in edit mode
   - Ability to store edits in scriptable objects for play mode editing and easy reuse 
   - Custom scene editor tools including transistioning
   - Based off of a jam project made with a friend that plays with the idea of shifting perspectives
+
+External libraries and assets used:
+ - [Triinspector](https://github.com/codewriter-packages/Tri-Inspector)
+ - [Dotween](https://dotween.demigiant.com/)
+ - Whale model and rig from Lohika Games
+ - Additional art from [OpenGameArt](https://opengameart.org/)
