@@ -33,5 +33,5 @@ Planned:
 External libraries and assets used:
  - [Triinspector](https://github.com/codewriter-packages/Tri-Inspector)
  - [Dotween](https://dotween.demigiant.com/)
- - Whale model and rig from Lohika Games
+ - Whale model and rig from Lohika Games (pending permission 😬 )
  - Additional art from [OpenGameArt](https://opengameart.org/)
