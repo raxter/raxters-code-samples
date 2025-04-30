@@ -2,11 +2,8 @@ Greetings! My name is raxter and if you are here, I've probably applied to a job
 
 Not convinced yet... so, I've made this repository to house code and systems examples to show that I actually am a programmer of 12+ years experience. 
 
-A lot of included here are riffed off of or loosly based of ideas and concepts that have been used in actual titles. But all code here is original and my own.
+A lot of included here are riffed off of or loosly based off of ideas and concepts that have been used in actual titles (albeit, often simplified for demonstration purposes). But all code here is bespoke and my own.
 
-[TODO] a list of features
-
-[more important TODO] the features...
 
 Planned:
 - Mutiscene-Area based Scene Streaming
@@ -21,14 +18,28 @@ Planned:
   - Based off of To Be A Whale's whale controller, adapted for more fluid controls
   - 2 stage system of blended animations and a intermediate animation controller, that is then driven by a high level system.
 - Camera Perspective-to-Orthographic View-Matrix Shifter
-  - Fun tool that modyfies a camera's perspective matrix to lerp smoothly from a perspective view to an orthographic one 
-  - For additional fun and mathematics, can also learp to a half orthographic, half perspective view! Either horizontally or vertically
-- Scriptable Object based Composition Editor
-  - Allows for scene objects to be moves and positioned into various compositions
-  - Fully editable/composable in edit mode
-  - Ability to store edits in scriptable objects for play mode editing and easy reuse 
-  - Custom scene editor tools including transistioning
-  - Based off of a jam project made with a friend that plays with the idea of shifting perspectives
+  - Fun tool that modyfies a camera's perspective matrix to lerp smoothly from a perspective view to an orthographic one
+  - Look this used to be very impressive to know the maths of this all before Unity and/or AI just gave us the matricies... 
+- Fully Definable Receipe System
+  - Allows one to make concoctions of multiple loosly defined solids and liquids
+  - Allows for definitions of how concoctions are 'cooked' (transformed) via different tools/processes
+  - Wildcard compatible for defining reciepes across multiple types
+  - E.g. Leaves + hot water => tea
+    - `Chamomile Leaf + Water ==(heat)==> "Chamomile Tea"`
+    - `*FLOWER   Leaf + Water ==(heat)==> "*FLOWER   Tea"`
+  - Cutting Vegitables
+    - `Whole Broccolli    ==(cut)==> Chopped Broccolli`
+    - `Whole *VEG         ==(cut)==> Chopped *VEG`
+    - `*     *VEG + Water ==(cut)==> Boiled  *VEG + *VEG Stock + Water`
+  - Has a well defined way of naming Concoctions
+    - e.g.
+    - example rule: `Chamomile Leaf + Water ==(heat)==> Boiled Chamomile Leaf + Boiled Camomile(l) + Water`
+    - naming rule: `Boiled *FLOWER(l)   + Water    --> "*FLOWER Tea"`
+    - naming rule: `Boiled *FLOWER Leaf + [LIQUID] --> "Bits of boiled *FLOWER Leaf in [LIQUID]"`
+    - applied:
+      - `Chamomile Leaf + Water ==(heat)==> Boiled Chamomile Leaf + Boiled Chamomile(l)`
+      - `Boiled Chamomile Leaf + Boiled Chamomile(l) + Water --> "Bits of boiled Chamomile Leaf in Chamomile Tea"`
+  
 
 External libraries and assets used:
  - [Triinspector](https://github.com/codewriter-packages/Tri-Inspector)
