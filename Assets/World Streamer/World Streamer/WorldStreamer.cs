@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using TriInspector;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -10,19 +13,40 @@ using UnityEditor.SceneManagement;
 
 namespace RaxterBaxter.WorldStreamer
 {
+    /*
+    * This class is responsible for loading and unloading scenes based on the areas that are currently loaded.
+    * It uses the AreaGroupDefinition to determine which scenes are in the 'world'.
+    * And then polls a loadingTrackerObject to determine which areas should currently be loaded (via the area's area bounds)
+    * The class is designed to work in both play mode and edit mode.
+    */
+    
     [DeclareFoldoutGroup("Hooks")]
     [DeclareFoldoutGroup("Debug")]
     [ExecuteInEditMode]
     public class WorldStreamer : MonoBehaviour
     {
         [SerializeField] private bool performInEditMode = false;
-        [SerializeField] private bool loadAllScenes = false;
+
+        public enum EditorModeOption
+        {
+            SimulatePlayMode,
+            LoadAllScenes,
+            UnloadAllScenes
+        }
+        
+        [Tooltip("To allow for loading all at once or to simulate a build like scenario starting from no loaded scenes.")]
+        [SerializeField] private EditorModeOption editorModeOption = EditorModeOption.SimulatePlayMode;
+        
+        [Tooltip("Set the scene load thread priority to low for smooth loading.")]
         [SerializeField] private bool setLowLoadThreadPriorityOnAwake = true;
         
-
+        [Tooltip("The area group definition to use for this world streamer.")]
+        [Required]
         [SerializeField] private AreaGroupDefinition areaGroup;
 
-        [Tooltip("This object will determine what point to test the area bounds")] [SerializeField]
+        [Tooltip("This object will determine what point to test the area bounds")] 
+        [SerializeField]
+        [Required]
         private GameObject loadingTrackerObject;
 
         [SerializeField] private LayerMask areaLayerMask;
@@ -54,6 +78,7 @@ namespace RaxterBaxter.WorldStreamer
         
         private bool notifiedOfGlobalLoaded = false;
 
+        private bool IsEditorMode => Application.isEditor && !Application.isPlaying;
         void Awake()
         {
             // Set the thread priority to low if set in the inspector
@@ -62,17 +87,47 @@ namespace RaxterBaxter.WorldStreamer
                 Application.backgroundLoadingPriority = ThreadPriority.Low;
             }
         }
+
+        #region Editor mode callbacks to refresh state as scenes load or unload
         
+#if UNITY_EDITOR
+        void OnEnable()
+        {
+            if (IsEditorMode)
+            {
+                EditorSceneManager.sceneOpened += OnSceneOpenedOrClosed;
+                EditorSceneManager.sceneClosed += OnSceneOpenedOrClosed;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (IsEditorMode)
+            {
+                EditorSceneManager.sceneOpened -= OnSceneOpenedOrClosed;
+                EditorSceneManager.sceneClosed -= OnSceneOpenedOrClosed;
+            }
+        }
+
+        private void OnSceneOpenedOrClosed(Scene scene, OpenSceneMode mode) => RepaintAllViews();
+        private void OnSceneOpenedOrClosed(Scene scene) => RepaintAllViews();
+        
+        private void RepaintAllViews() => 
+            EditorApplication.delayCall += () => 
+                UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
+#endif
+        #endregion
+
         void LateUpdate()
         {
             // Disable execution in prefab mode as scene loading there will cause issues 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
             bool inPrefabMode = false;
             var prefabStage = PrefabStageUtility.GetCurrentPrefabStage();
             inPrefabMode = prefabStage != null;
             if (inPrefabMode)
                 return;
-    #endif
+#endif
 
             if (Application.isPlaying && performInEditMode == false)
                 return;
@@ -85,14 +140,23 @@ namespace RaxterBaxter.WorldStreamer
 
         private void ReconcileAreas()
         {
-            if (loadAllScenes)
+            if (IsEditorMode)
             {
-                AreasThatShouldBeLoaded.Clear();
-                foreach (var area in areaGroup.AreaDefinitions)
-                    AreasThatShouldBeLoaded.Add(area);
-                return;
+                if (editorModeOption == EditorModeOption.UnloadAllScenes)
+                {
+                    AreasThatShouldBeLoaded.Clear();
+                    return;
+                }
+
+                if (editorModeOption == EditorModeOption.LoadAllScenes)
+                {
+                    AreasThatShouldBeLoaded.Clear();
+                    foreach (var area in areaGroup.AreaDefinitions)
+                        AreasThatShouldBeLoaded.Add(area);
+                    return;
+                }
             }
-            
+
             // Get the position of the loading tracker object
             Vector3 position = loadingTrackerObject?.transform.position ?? transform.position;
 
@@ -113,7 +177,17 @@ namespace RaxterBaxter.WorldStreamer
 
         private void ReconcileScenes()
         {
-            // Clear the list of scenes that should be loaded
+            if (IsEditorMode)
+            {
+                // Clear the list of scenes that should be loaded
+                if (editorModeOption == EditorModeOption.UnloadAllScenes)
+                {
+                    ScenesThatShouldBeLoadedPrioritized.Clear();
+                    ScenesThatShouldBeLoadedPrioritized_Readable.Clear();
+                    return;
+                }
+            }
+
             ScenesThatShouldBeLoadedPrioritized.ForEach(l => l.Clear());
 
             if (ScenesThatShouldBeLoadedPrioritized.Count < 1)
@@ -136,6 +210,8 @@ namespace RaxterBaxter.WorldStreamer
 
             // Convert the AssetReference to a string for display
             ScenesThatShouldBeLoadedPrioritized_Readable.Clear();
+            
+#if UNITY_EDITOR
             foreach (var list in ScenesThatShouldBeLoadedPrioritized)
             {
                 var readableList = new List<string>();
@@ -143,6 +219,7 @@ namespace RaxterBaxter.WorldStreamer
                     readableList.Add((scene.editorAsset as SceneAsset).ToString());
                 ScenesThatShouldBeLoadedPrioritized_Readable.Add(readableList);
             }
+#endif
         }
 
 
@@ -167,6 +244,7 @@ namespace RaxterBaxter.WorldStreamer
                 }
             }
             
+#if UNITY_EDITOR
             // Convert the AssetReference to a string for display
             ScenesThatShouldBeLoaded_Readable.Clear();
             foreach (var scene in ScenesThatShouldBeLoaded)
@@ -174,6 +252,7 @@ namespace RaxterBaxter.WorldStreamer
                 if (scene.editorAsset is SceneAsset)
                     ScenesThatShouldBeLoaded_Readable.Add((scene.editorAsset as SceneAsset).ToString());
             }
+#endif
         }
 
         private void LoadAndUnloadScenes()
@@ -200,7 +279,7 @@ namespace RaxterBaxter.WorldStreamer
                 if (scene == null)
                     continue;
                 
-                // ignore scenes that are not in the area group definition, these are probably helper scenes
+                // ignore scenes that are not in the area group definition or global, these are probably helper scenes
                 if (!areaGroup.ContainsScene(scene))
                     continue;
                 
@@ -217,7 +296,7 @@ namespace RaxterBaxter.WorldStreamer
             // otherwise it can get stuck mid-process until you manually refresh (i.e. move your mouse over the editor)
             if (sceneLoadedOrUnloaded)
             {
-                UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
+                RepaintAllViews();
             }
 #endif
         }
@@ -228,7 +307,7 @@ namespace RaxterBaxter.WorldStreamer
             if (additiveLoadingMode == LoadingMode.OneAtATime && SceneLoadUtility.AnySceneLoading)
                 return;
             
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
             if (Application.isPlaying)
             {
                 // Play mode (while in Editor)
@@ -239,16 +318,16 @@ namespace RaxterBaxter.WorldStreamer
                 // Editor mode
                 SceneLoadUtility.LoadSceneEditorMode(scene);
             }
-    #else
+#else
             // Build
             SceneLoadUtility.LoadSceneBuildMode(scene);
-    #endif
+#endif
         }
         
         
         void UnloadScene(AssetReference scene)
         {
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
             if (Application.isPlaying)
             {
                 SceneLoadUtility.UnloadScenePlayModeViaAddressables(scene);
@@ -257,9 +336,9 @@ namespace RaxterBaxter.WorldStreamer
             {
                 SceneLoadUtility.UnloadSceneEditorModeViaEditorSceneManager(scene);
             }
-    #else
+#else
                 SceneLoadUtility.UnloadSceneBuildModeViaAddressables(scene);
-    #endif
+#endif
         }
         
 

@@ -158,11 +158,11 @@ Transform:
   m_GameObject: {fileID: 1060443811}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.63, y: 0, z: 3.42}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2131078482}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2131078481
 GameObject:
@@ -174,6 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2131078482}
   - component: {fileID: 2131078483}
+  - component: {fileID: 2131078484}
   m_Layer: 0
   m_Name: World Streamer
   m_TagString: Untagged
@@ -190,11 +191,10 @@ Transform:
   m_GameObject: {fileID: 2131078481}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6.6}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1060443813}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2131078483
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   performInEditMode: 1
-  loadAllScenes: 1
+  editorModeOption: 0
   setLowLoadThreadPriorityOnAwake: 1
   areaGroup: {fileID: 11400000, guid: 678ed268546580a448386b4819880357, type: 2}
   loadingTrackerObject: {fileID: 1060443811}
@@ -233,8 +233,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2131078484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131078481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd214ac4ce5970c4cbd9bea816f900e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 2131078482}
+  - {fileID: 1060443813}

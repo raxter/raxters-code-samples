@@ -4,6 +4,9 @@ using UnityEngine.AddressableAssets;
 
 namespace RaxterBaxter.WorldStreamer
 {
+    /**
+     * This class defines a group of areas and their associated global scenes.
+     */
     [CreateAssetMenu(fileName = "NewAreaGroupDefinition", menuName = "World Streamer/Area Group Definition")]
     public class AreaGroupDefinition : ScriptableObject
     {
@@ -27,24 +30,17 @@ namespace RaxterBaxter.WorldStreamer
                 {
                     _alwaysLoadedScenes ??= new HashSet<AssetReference>(
                         areaDefinitions.ConvertAll(a => a.AlwaysLoadedScene),
-                        _comparer);
+                        new AssetReferenceEqualityComparer());
                     return _alwaysLoadedScenes;
                 }
                 else
                 {
                     return new HashSet<AssetReference>(
                         areaDefinitions.ConvertAll(a => a.AlwaysLoadedScene),
-                        _comparer);
+                        new AssetReferenceEqualityComparer());
                 }
             }
         }
-
-        #region Custom comparer for HashSet
-
-        private AssetReferenceEqualityComparer _comparer { get; set; } = new AssetReferenceEqualityComparer();
-
-
-        #endregion
 
         private HashSet<AreaDefinition> _areaGroups = null;
 
@@ -58,7 +54,7 @@ namespace RaxterBaxter.WorldStreamer
             else
 #endif
             {
-                _areaGroups ??= new HashSet<AreaDefinition>(areaDefinitions);
+                _areaGroups ??= new HashSet<AreaDefinition>(areaDefinitions, new AreaDefinitionEqualityComparer());
 
                 return _areaGroups.Contains(area);
             }
@@ -69,6 +65,11 @@ namespace RaxterBaxter.WorldStreamer
             foreach (var area in areaDefinitions)
             {
                 if (area.Contains(scene))
+                    return true;
+            }
+            foreach (var globalScene in globalScenes)
+            {
+                if (AssetReferenceEqualityComparer.EqualsStatic(globalScene, scene))
                     return true;
             }
 

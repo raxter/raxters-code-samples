@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/World Streamer/Example/World Streamer (open this one).unity
+    guid: 5c8a9ca177cbcaa42a316ef3205484a1
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: a7467051747fced44a651da670ea23b6, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
