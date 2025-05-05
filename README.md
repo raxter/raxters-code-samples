@@ -2,7 +2,7 @@ Greetings! My name is raxter and if you are here, I've probably applied to a job
 
 Not convinced yet... so, I've made this repository to house code and systems examples to show that I actually am a programmer of 12+ years experience. 
 
-A lot of included here are riffed off of or loosley based off of ideas and concepts that have been used in actual titles (albeit, simplified here for demonstration purposes). 
+many of the examples included are loosley based off of ideas and concepts that have been used in actual titles (albeit, simplified here for demonstration purposes). 
 
 Unless otherwise stated, all code herein is bespoke and my own.
 
