@@ -1,0 +1,332 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7fc267e6a52a2c4893b213ad042be68, type: 3}
+  m_Name: All Processes
+  m_EditorClassIdentifier: 
+  processResults:
+  - scalingType: 1
+    input:
+      solids:
+        data:
+        - status: 
+          ingredient: '*FLOWER'
+          part: Flower
+          amount: 1
+      liquids:
+        data:
+        - status: 
+          ingredient: Water
+          part: 
+          amount: 1
+    tool: 1
+    result:
+      solids:
+        data:
+        - status: Boiled
+          ingredient: '*FLOWER'
+          part: 
+          amount: 1
+      liquids:
+        data:
+        - status: Boiled
+          ingredient: '*FLOWER'
+          part: 
+          amount: 0.5
+        - status: Boiled
+          ingredient: Plant Matter
+          part: 
+          amount: 0.3
+        - status: 
+          ingredient: Water
+          part: 
+          amount: 0.2
+  - scalingType: 1
+    input:
+      solids:
+        data:
+        - status: 
+          ingredient: '*FLOWER'
+          part: Petals
+          amount: 1
+      liquids:
+        data:
+        - status: 
+          ingredient: Water
+          part: 
+          amount: 1
+    tool: 1
+    result:
+      solids:
+        data:
+        - status: Boiled
+          ingredient: '*FLOWER'
+          part: Petals
+          amount: 1
+      liquids:
+        data:
+        - status: 
+          ingredient: Water
+          part: 
+          amount: 0.5
+        - status: Boiled
+          ingredient: '*FLOWER'
+          part: 
+          amount: 0.5
+  - scalingType: 1
+    input:
+      solids:
+        data:
+        - status: Crushed
+          ingredient: '*FLOWER'
+          part: Petals
+          amount: 1
+      liquids:
+        data:
+        - status: 
+          ingredient: Water
+          part: 
+          amount: 1
+    tool: 1
+    result:
+      solids:
+        data:
+        - status: 
+          ingredient: '*FLOWER'
+          part: Mulch
+          amount: 0.5
+      liquids:
+        data:
+        - status: 
+          ingredient: Water
+          part: 
+          amount: 0.25
+        - status: Boiled
+          ingredient: '*FLOWER'
+          part: 
+          amount: 0.75
+  - scalingType: 1
+    input:
+      solids:
+        data:
+        - status: Powdered
+          ingredient: '*FLOWER'
+          part: Petals
+          amount: 1
+      liquids:
+        data:
+        - status: 
+          ingredient: Water
+          part: 
+          amount: 1
+    tool: 1
+    result:
+      solids:
+        data: []
+      liquids:
+        data:
+        - status: Boiled
+          ingredient: '*FLOWER'
+          part: 
+          amount: 1
+  - scalingType: 1
+    input:
+      solids:
+        data:
+        - status: 
+          ingredient: '*FLOWER'
+          part: '*CRUSHABLE_PLANT_P'
+          amount: 1
+      liquids:
+        data: []
+    tool: 5
+    result:
+      solids:
+        data:
+        - status: Crushed
+          ingredient: '*FLOWER'
+          part: '*CRUSHABLE_PLANT_P'
+          amount: 1
+      liquids:
+        data: []
+  - scalingType: 1
+    input:
+      solids:
+        data:
+        - status: 
+          ingredient: '*FLOWER'
+          part: '*CRUSHABLE_PLANT_P'
+          amount: 1
+      liquids:
+        data: []
+    tool: 8
+    result:
+      solids:
+        data:
+        - status: Dried
+          ingredient: '*FLOWER'
+          part: '*CRUSHABLE_PLANT_P'
+          amount: 1
+      liquids:
+        data: []
+  - scalingType: 1
+    input:
+      solids:
+        data:
+        - status: Dried
+          ingredient: '*FLOWER'
+          part: '*CRUSHABLE_PLANT_P'
+          amount: 1
+      liquids:
+        data: []
+    tool: 5
+    result:
+      solids:
+        data:
+        - status: Powdered
+          ingredient: '*FLOWER'
+          part: '*CRUSHABLE_PLANT_P'
+          amount: 1
+      liquids:
+        data: []
+  - scalingType: 1
+    input:
+      solids:
+        data:
+        - status: Crushed
+          ingredient: '*FLOWER'
+          part: '*CRUSHABLE_PLANT_P'
+          amount: 1
+      liquids:
+        data: []
+    tool: 8
+    result:
+      solids:
+        data:
+        - status: Powdered
+          ingredient: '*FLOWER'
+          part: '*CRUSHABLE_PLANT_P'
+          amount: 1
+      liquids:
+        data: []
+  - scalingType: 1
+    input:
+      solids:
+        data: []
+      liquids:
+        data:
+        - status: Boiled
+          ingredient: '*FLOWER'
+          part: 
+          amount: 1
+    tool: 1
+    result:
+      solids:
+        data: []
+      liquids:
+        data:
+        - status: Boiled
+          ingredient: '*FLOWER'
+          part: 
+          amount: 0.5
+        - status: Herbaceous
+          ingredient: Water
+          part: 
+          amount: 0.25
+        - status: 
+          ingredient: Water
+          part: 
+          amount: 0.25
+  splitProcessResults:
+  - scalingType: 2
+    input:
+      solids:
+        data:
+        - status: 
+          ingredient: '*FLOWER'
+          part: Flower
+          amount: 1
+      liquids:
+        data: []
+    tool: 2
+    result:
+    - solids:
+        data:
+        - status: 
+          ingredient: '*FLOWER'
+          part: Petals
+          amount: 1
+      liquids:
+        data: []
+    - solids:
+        data:
+        - status: 
+          ingredient: '*FLOWER'
+          part: Stalk
+          amount: 1
+      liquids:
+        data: []
+  - scalingType: 2
+    input:
+      solids:
+        data:
+        - status: 
+          ingredient: '*FLOWER'
+          part: Stalk
+          amount: 1
+      liquids:
+        data: []
+    tool: 2
+    result:
+    - solids:
+        data:
+        - status: 
+          ingredient: '*FLOWER'
+          part: Leaves
+          amount: 1
+      liquids:
+        data: []
+    - solids:
+        data:
+        - status: 
+          ingredient: '*FLOWER'
+          part: Bulb
+          amount: 1
+      liquids:
+        data: []
+  - scalingType: 2
+    input:
+      solids:
+        data:
+        - status: 
+          ingredient: '*FLOWER'
+          part: Bulb
+          amount: 1
+      liquids:
+        data: []
+    tool: 2
+    result:
+    - solids:
+        data:
+        - status: 
+          ingredient: '*FLOWER'
+          part: Seeds
+          amount: 1
+      liquids:
+        data: []
+    - solids:
+        data:
+        - status: 
+          ingredient: '*FLOWER'
+          part: Stem
+          amount: 1
+      liquids:
+        data: []

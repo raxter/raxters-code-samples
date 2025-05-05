@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735042df210a4011a90b2eb71f0777a4, type: 3}
+  m_Name: Wildcards
+  m_EditorClassIdentifier: Assembly-CSharp::IngredientWildcardLibrary
+  wildcards:
+  - name: PLANT_PART
+    type: 2
+    possibilities:
+    - Petals
+    - Stalk
+    - Stem
+    - Leaves
+    - Seeds
+  - name: CRUSHABLE_PLANT_P
+    type: 2
+    possibilities:
+    - Petals
+    - Seeds
+  - name: FLOWER
+    type: 1
+    possibilities:
+    - Allheal
+    - Chamomile
+  - name: PLANT_STATE
+    type: 0
+    possibilities:
+    - 
+    - Boiled
+    - Chopped
+    - Crushed
+    - Dried
+    - Powdered

@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3419fe0c9372984894f883f686cd178, type: 3}
+  m_Name: Concoction Naming Rules
+  m_EditorClassIdentifier: 
+  liquidRules:
+  - mainIngredient:
+      status: Boiled
+      ingredient: '*FLOWER'
+      part: 
+    baseLiquidID: WATER
+    tokens:
+      input:
+      - '[BASE]'
+      result:
+      - '[STRENGTH]'
+      - Tonic of
+      - '*FLOWER'
+  - mainIngredient:
+      status: Reversed
+      ingredient: '*FLOWER'
+      part: 
+    baseLiquidID: WATER
+    tokens:
+      input:
+      - '[*|PRE_BASE]'
+      - '[BASE]'
+      result:
+      - '[STRENGTH]'
+      - Tonic of
+      - '*FLOWER'
+      - that is
+      - '[PRE_BASE]'
+  tasteRules:
+  - baseLiquidID: WATER
+    baseLiquid:
+      status: 
+      ingredient: Water
+      part: 
+    baseTokens:
+    - '[TASTE_LIST]'
+    - '[BASE]'
+    affectors:
+    - affector:
+        status: Sugar
+        ingredient: Water
+        part: 
+      taste: Sweet
+      tokens:
+        input:
+        - '[TASTE_LIST]'
+        - '[BASE]'
+        result:
+        - '[TASTE_DESC]'
+        - '[TASTE]'
+        - '[AND]+'
+        - '[TASTE_LIST]'
+        - '[BASE]'
+    - affector:
+        status: Herbacous
+        ingredient: Water
+        part: 
+      taste: Herbacous
+      tokens:
+        input:
+        - '[TASTE_LIST]'
+        - '[BASE]'
+        result:
+        - '[TASTE_DESC]'
+        - '[TASTE]'
+        - '[AND]+'
+        - '[TASTE_LIST]'
+        - '[BASE]'
+    - affector:
+        status: Boiled
+        ingredient: Plant Matter
+        part: 
+      taste: Bitter
+      tokens:
+        input:
+        - '[TASTE_LIST]'
+        - '[BASE]'
+        result:
+        - '[TASTE_DESC]'
+        - '[TASTE]'
+        - '[AND]+'
+        - '[TASTE_LIST]'
+        - '[BASE]'
+    postAffectTransform:
+    - input:
+      - '[AND]+'
+      - '[TASTE_LIST]'
+      result: []
+  tasteDescriptions:
+  - name: TASTE_DESC
+    strengths:
+    - name: Overwhelmingly
+      minValue: 0.9
+    - name: Very
+      minValue: 0.6
+    - name: 
+      minValue: 0.4
+    - name: Slightly
+      minValue: 0.05
+    - name: '[TASTE]-'
+      minValue: 0
+  - name: STRENGTH
+    strengths:
+    - name: Concentrated
+      minValue: 0.9
+    - name: Strong
+      minValue: 0.6
+    - name: 
+      minValue: 0.4
+    - name: Weak
+      minValue: 0.05
+    - name: '[TASTE]-'
+      minValue: 0
+  wildcards: {fileID: 11400000, guid: fa50db3c8f19ad64ea6edfb286cc7cb1, type: 2}
+  testConcoction:
+    solids:
+      data: []
+    liquids:
+      data:
+      - status: Boiled
+        ingredient: Allheal
+        part: 
+        amount: 17.8
+  residueDebug:
+    data:
+    - status: Boiled
+      ingredient: Allheal
+      part: 
+      amount: 17.8
+    - status: 
+      ingredient: Water
+      part: 
+      amount: 0
