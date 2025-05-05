@@ -1,4 +1,4 @@
-Greetings! My name is raxter and if you are here, I've probably applied to a job with you! 
+Greetings! My name is raxter and if you are here, I've probably applied to a job with you!\
 Do please go ahead and hire me.
 
 Not convinced ... so, I've made this repository to house code and systems examples to show that I can produce code.
@@ -6,9 +6,9 @@ Not convinced ... so, I've made this repository to house code and systems exampl
 And there is of course my [portfolio](https://raxterbaxter.com/portfolio/) to demonstarate that I've indeed produced a significant amount of release-worthy code as a developer and lead.\
 Or my [gameplay portfolio](https://raxterbaxter.com/portfolio/gameplay/) to demonstrate more complex systems.
 
-Many of the examples included are loosley based off of ideas and concepts that have been used in actual titles (albeit, simplified here for demonstration purposes). 
+Many of the examples included are loosley based off of ideas and concepts that have been used in actual titles, albeit generalized and simplified here for demonstration purposes. 
 
-Unless otherwise stated, all code herein is bespoke and my own.
+With the exception of the external plugins listed at the end, all code herein is bespoke and my own.
 
 Multiscene-Area based Scene Streaming
 ===
@@ -73,7 +73,7 @@ Coming soon!
   - Based off of To Be A Whale's whale controller, adapted for more fluid controls
   - 2 stage system of blended animations and an intermediate animation controller, that is then driven by a high level system.
 
-External libraries and assets used:
+External assets and plugins used:
  - [Triinspector](https://github.com/codewriter-packages/Tri-Inspector)
  - [Dotween](https://dotween.demigiant.com/)
  - Whale model and rig from Lohika Games (coming soon)
