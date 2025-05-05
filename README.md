@@ -34,8 +34,8 @@ Fully Definable Recipe System
   - Wildcard compatible for defining recipes across multiple types
 
 https://github.com/user-attachments/assets/251f1a33-6b76-4ea4-b2cf-bfaac65fcdf5
-    
-![image](https://github.com/user-attachments/assets/6f546412-05f1-4e56-ab6e-0fc52fc2f546)
+
+(Herbalist interactive scene not included in repo ... yet)
 
 **E.g. Leaves + hot water => tea**\
 `Chamomile Leaf + Water ==(heat)==> "Chamomile Tea"`\
@@ -54,11 +54,12 @@ naming rule: `Boiled *FLOWER Leaf + [LIQUID] --> "Bits of boiled *FLOWER Leaf in
 applied:\
 `Chamomile Leaf + Water ==(heat)==> Boiled Chamomile Leaf + Boiled Chamomile(l)`\
 `Boiled Chamomile Leaf + Boiled Chamomile(l) + Water --> "Bits of boiled Chamomile Leaf in Chamomile Tea"`
-      
-
+    
+![image](https://github.com/user-attachments/assets/6f546412-05f1-4e56-ab6e-0fc52fc2f546)
 
 Coming soon!
 ---
+- Playable example of the recipe system!
 - Narrative and Logic Flow Timeline Controller
   - Allows for logic based flow within a unity Timeline
   - Logic defined by a signal-like clips in a logic controller track
