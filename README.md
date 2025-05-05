@@ -4,16 +4,31 @@ Not convinced yet... so, I've made this repository to house code and systems exa
 
 A lot of included here are riffed off of or loosly based off of ideas and concepts that have been used in actual titles (albeit, often simplified for demonstration purposes). But all code here is bespoke and my own.
 
-
-Included:
-- Mutiscene-Area based Scene Streaming
+Mutiscene-Area based Scene Streaming
+===
   - Allows sets of scenes to be loaded in and out automatically based on player position. 
   - Useful for open world games that require seamless traversal over a large segmentable world
   - Includes editor tools for loading + unloading scenes in edit mode
   - Areas defined via scriptable objects
+
+Camera Perspective-to-Orthographic View-Matrix Shifter
+---
+  - Fun tool that modyfies a camera's perspective matrix to lerp smoothly from a perspective view to an orthographic one
+  - Look, this used to be very impressive to know the maths of this all before Unity and/or AI just gave us the matricies...
+    
+Vertex Offset Wave Effect
+---
+  - Offsets a vertex by a height based on 3 material defined sine waves
+  - Calculates normal of surfaces via gradient
+  - Working on the Low-Poly look... it's coming 
   
-- Fully Definable Receipe System
-  - Allows one to make concoctions of multiple loosly defined solids and liquids
+https://github.com/user-attachments/assets/2453ec4f-b02d-44a8-96dd-7d6479cf28fa
+
+![image](https://github.com/user-attachments/assets/8dbd0fb8-db32-4d2f-b61a-a3b9f66f24b2)
+
+Fully Definable Receipe System
+===
+  - Allows one to make concoctions defined as a set of solids and liquids
   - Allows for definitions of how concoctions are 'cooked' (transformed) via different tools/processes
   - Wildcard compatible for defining reciepes across multiple types
   - E.g. Leaves + hot water => tea
@@ -31,12 +46,12 @@ Included:
     - applied:
       - `Chamomile Leaf + Water ==(heat)==> Boiled Chamomile Leaf + Boiled Chamomile(l)`
       - `Boiled Chamomile Leaf + Boiled Chamomile(l) + Water --> "Bits of boiled Chamomile Leaf in Chamomile Tea"`
-    
-- Camera Perspective-to-Orthographic View-Matrix Shifter
-  - Fun tool that modyfies a camera's perspective matrix to lerp smoothly from a perspective view to an orthographic one
-  - Look this used to be very impressive to know the maths of this all before Unity and/or AI just gave us the matricies...
+      
+![image](https://github.com/user-attachments/assets/6f546412-05f1-4e56-ab6e-0fc52fc2f546)
+
 
 Coming soon!
+---
 - Narrative and Logic Flow Timeline Controller
   - Allows for logic based flow within a unity Timeline
   - Logic defined by a signal-like
@@ -47,5 +62,5 @@ Coming soon!
 External libraries and assets used:
  - [Triinspector](https://github.com/codewriter-packages/Tri-Inspector)
  - [Dotween](https://dotween.demigiant.com/)
- - Whale model and rig from Lohika Games
- - Additional art from [OpenGameArt](https://opengameart.org/)
+ - Whale model and rig from Lohika Games (coming soon)
+ - Additional art from [OpenGameArt](https://opengameart.org/) (when I get around to prettifying this all)
