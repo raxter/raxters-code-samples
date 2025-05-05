@@ -4,7 +4,7 @@ Do please go ahead and hire me.
 Not convinced ... so, I've made this repository to house code and systems examples to show that I can produce code.
 
 And there is of course my [portfolio](https://raxterbaxter.com/portfolio/) to demonstarate that I've indeed produced a significant amount of release-worthy code as a developer and lead.\
-Or my [gameplay portfolio](https://raxterbaxter.com/portfolio/gameplay/) to demonstrate more complex systems.
+Or my [gameplay portfolio](https://raxterbaxter.com/portfolio/gameplay/) to demonstrate more complex in-game systems.
 
 Many of the examples included are loosley based off of ideas and concepts that have been used in actual titles, albeit generalized and simplified here for demonstration purposes. 
 
