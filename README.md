@@ -1,8 +1,12 @@
-Greetings! My name is raxter and if you are here, I've probably applied to a job with you! Do please go ahead and hire me.
+Greetings! My name is raxter and if you are here, I've probably applied to a job with you! 
+Do please go ahead and hire me.
 
-Not convinced yet... so, I've made this repository to house code and systems examples to show that I actually am a programmer of 12+ years experience. 
+Not convinced ... so, I've made this repository to house code and systems examples to show that I can produce code.
 
-many of the examples included are loosley based off of ideas and concepts that have been used in actual titles (albeit, simplified here for demonstration purposes). 
+And there is of course my [portfolio](https://raxterbaxter.com/portfolio/) to demonstarate that I've indeed produced a significant amount of release-worthy code as a developer and lead.\
+Or my [gameplay portfolio](https://raxterbaxter.com/portfolio/gameplay/) to demonstrate more complex systems.
+
+Many of the examples included are loosley based off of ideas and concepts that have been used in actual titles (albeit, simplified here for demonstration purposes). 
 
 Unless otherwise stated, all code herein is bespoke and my own.
 
