@@ -32,6 +32,8 @@ Fully Definable Recipe System
   - Allows one to make concoctions defined as a set of solids and liquids
   - Allows for definitions of how concoctions are 'cooked' (transformed) via different tools/processes
   - Wildcard compatible for defining recipes across multiple types
+
+https://github.com/user-attachments/assets/251f1a33-6b76-4ea4-b2cf-bfaac65fcdf5
     
 ![image](https://github.com/user-attachments/assets/6f546412-05f1-4e56-ab6e-0fc52fc2f546)
 
